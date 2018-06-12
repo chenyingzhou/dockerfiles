@@ -4,16 +4,16 @@
 ## 构建镜像
 只需要保证先构建ubuntu-16.04:self就可以
 ```shell
-cd /path/to/ubuntu-16.04-self/dir
+cd /path/to/ubuntu-16.04-self
 docker build -t ubuntu-16.04:self .
 
-cd /path/to/nginx-self/dir
+cd /path/to/nginx-self
 docker build -t nginx:self .
 
-cd /path/to/redis-self/dir
+cd /path/to/redis-self
 docker build -t redis:self .
 
-cd /path/to/php7.2-self/dir
+cd /path/to/php7.2-self
 docker build -t php7.2:self .
 ```
 
