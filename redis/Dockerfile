@@ -1,4 +1,4 @@
-FROM ubuntu1804:nome
+FROM ubuntu1804:ali
 
 RUN apt-get update \
     && apt-get install -y redis-server \
