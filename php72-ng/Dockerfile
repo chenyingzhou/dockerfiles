@@ -1,4 +1,4 @@
-FROM ubuntu:18.04-163
+FROM chenyingzhou/ubuntu1804:latest
 
 # 安装php并修改配置文件(配置仅适用于开发环境)
 RUN apt-get update \

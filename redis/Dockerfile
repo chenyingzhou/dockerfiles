@@ -1,4 +1,4 @@
-FROM ubuntu:18.04-163
+FROM chenyingzhou/ubuntu1804:latest
 
 RUN apt-get update \
     && apt-get install -y redis-server \
