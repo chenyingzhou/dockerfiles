@@ -55,6 +55,17 @@ RUN apt-get update \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update \
+    && apt install -y wget php7.2-dev libz-dev \
+    && pecl install grpc \
+    && echo 'extension=grpc.so' > /etc/php/7.2/mods-available/grpc.ini \
+    && ln -s /etc/php/7.2/mods-available/grpc.ini /etc/php/7.2/fpm/conf.d/20-grpc.ini \
+    && ln -s /etc/php/7.2/mods-available/grpc.ini /etc/php/7.2/cli/conf.d/20-grpc.ini \
+    && apt purge -y wget php7.2-dev libz-dev \
+    && apt autoremove -y \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
 # 安装nginx并修改配置文件
 RUN apt-get update \
     && apt install -y nginx \
