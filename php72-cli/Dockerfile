@@ -7,7 +7,6 @@ RUN apt-get update \
     && apt install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-gmp php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip php-xdebug php-redis \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* \
-    && sed -i 's/^listen = \/run\/php\/php7.2-fpm.sock/listen = 9000/' /etc/php/7.2/fpm/pool.d/www.conf \
     && echo 'xdebug.remote_enable = 1' >> /etc/php/7.2/mods-available/xdebug.ini \
     && echo 'xdebug.remote_autostart = 1' >> /etc/php/7.2/mods-available/xdebug.ini \
     && echo 'xdebug.remote_handler = dbgp' >> /etc/php/7.2/mods-available/xdebug.ini \
