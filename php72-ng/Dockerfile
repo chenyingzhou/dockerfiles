@@ -1,4 +1,5 @@
 FROM chenyingzhou/php72-cli:latest
+USER root
 
 # 将监听改为9000端口
 RUN sed -i 's/^listen = \/run\/php\/php7.2-fpm.sock/listen = 9000/' /etc/php/7.2/fpm/pool.d/www.conf
