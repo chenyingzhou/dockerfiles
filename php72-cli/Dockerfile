@@ -4,7 +4,7 @@ FROM chenyingzhou/ubuntu1804:latest
 RUN apt-get update \
     && sh -c '/bin/echo -e "6\n70" | apt-get install -y tzdata' \
     && apt install -y re2c \
-    && apt install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-gmp php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip php-xdebug php-redis \
+    && apt install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-gmp php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip php7.2-bcmath php-xdebug php-redis \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo 'xdebug.remote_enable = 1' >> /etc/php/7.2/mods-available/xdebug.ini \
