@@ -12,6 +12,7 @@ services:
       - lnmp
     environment:
       MYSQL_ROOT_PASSWORD: root
+    command: --default-authentication-plugin=mysql_native_password
     restart: always
   redis:
     image: chenyingzhou/redis:latest
