@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  socks2http:
+    image: chenyingzhou/socks2http:latest
+    ports:
+      - 1081:1081
+    networks:
+      - socks2http
+    environment:
+      SOCKS_HOST: your_socks_host:1080
+    restart: always
+
+networks:
+  socks2http:
