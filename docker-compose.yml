@@ -84,7 +84,7 @@ services:
       MYSQL_HOST: mysql
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
-      MAXWELL_OPTIONS: --port=3306 --kafka_topic=maxwell%{database}_%{table} --filter=exclude:*.*,include:maxwell_source.*
+      MAXWELL_OPTIONS: --port=3306 --kafka_topic=maxwell_%{database}_%{table} --filter=exclude:*.*,include:maxwell_source.*
       JAVA_OPTS: -Xms128m -Xmx512m
     depends_on:
       - kafka
