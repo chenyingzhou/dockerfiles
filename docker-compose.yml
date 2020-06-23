@@ -58,7 +58,7 @@ services:
     ports:
       - 9092:9092
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_ADVERTISED_HOST_NAME: host.docker.internal # Linux下需要改为宿主机IP
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_BROKER_ID: 1
       KAFKA_HEAP_OPTS: -Xms128m -Xmx512m
