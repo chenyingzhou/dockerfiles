@@ -73,7 +73,7 @@ services:
     ports:
       - 8081:8081
     environment:
-      INSTALL4J_ADD_VM_PARAMS: -Xms128m -Xmx512m
+      INSTALL4J_ADD_VM_PARAMS: -Xms64m -Xmx64m
   maxwell:
     container_name: maxwell
     image: zendesk/maxwell
@@ -89,3 +89,15 @@ services:
     depends_on:
       - kafka
       - mysql
+  nacos:
+    container_name: nacos
+    image: nacos/nacos-server:latest
+    restart: always
+    environment:
+      PREFER_HOST_MODE: hostname
+      MODE: standalone
+    volumes:
+      - ~/docker-volume/nacos/logs:/home/nacos/logs
+      - ~/docker-volume/nacos/init.d:/home/nacos/init.d
+    ports:
+      - "8848:8848"
