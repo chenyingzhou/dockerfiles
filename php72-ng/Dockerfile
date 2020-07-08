@@ -22,7 +22,7 @@ RUN { \
     } | tee /start.sh \
     && chmod 755 /start.sh
 
-VOLUME ["/etc/nginx/conf.d", "/var/www/http"]
+VOLUME ["/etc/nginx/conf.d", "/app"]
 
 EXPOSE 80 443
 

@@ -70,4 +70,4 @@ RUN usermod -u 1000 www-data \
     && groupmod -g 1000 www-data
 USER www-data
 
-VOLUME ["/var/www/http"]
+VOLUME ["/app"]
