@@ -9,16 +9,15 @@ RUN apt-get update \
     && apt install -y nginx \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* \
-    && echo 'daemon off;' >> /etc/nginx/nginx.conf
+    && echo 'daemon off;' >> /etc/nginx/nginx.conf \
+    && sed -i 's/www-data/root/' /etc/nginx/nginx.conf \
+    && sed -i 's/www-data/root/' /etc/php/7.2/fpm/pool.d/www.conf
 
 # 添加启动脚本
-ENV UID 1000
 RUN { \
         echo "#!/bin/sh"; \
-        echo "usermod -u \${UID} www-data"; \
-        echo "groupmod -g \${UID} www-data"; \
-        echo "service php7.2-fpm start"; \
-        echo "service nginx start"; \
+        echo "/usr/sbin/php-fpm7.2 -R"; \
+        echo "/usr/sbin/nginx"; \
     } | tee /start.sh \
     && chmod 755 /start.sh
 
