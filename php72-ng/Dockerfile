@@ -16,6 +16,8 @@ RUN apt-get update \
 # 添加启动脚本
 RUN { \
         echo "#!/bin/sh"; \
+        echo "mkdir -p /run/php/"; \
+        echo "touch /run/php/php7.2-fpm.pid"; \
         echo "/usr/sbin/php-fpm7.2 -R"; \
         echo "/usr/sbin/nginx"; \
     } | tee /start.sh \
