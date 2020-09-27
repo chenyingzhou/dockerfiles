@@ -73,7 +73,7 @@ services:
     ports:
       - 8081:8081
     environment:
-      INSTALL4J_ADD_VM_PARAMS: -Xms128m -Xmx512m
+      INSTALL4J_ADD_VM_PARAMS: -Xms320m -Xmx320m
   maxwell:
     container_name: maxwell
     image: zendesk/maxwell
@@ -85,7 +85,7 @@ services:
       MYSQL_USERNAME: root
       MYSQL_PASSWORD: root
       MAXWELL_OPTIONS: --port=3306 --kafka_topic=maxwell_%{database}_%{table} --filter=exclude:*.*,include:maxwell_source.*
-      JAVA_OPTS: -Xms128m -Xmx512m
+      JAVA_OPTS: -Xms128m -Xmx128m
     depends_on:
       - kafka
       - mysql
@@ -96,6 +96,11 @@ services:
     environment:
       PREFER_HOST_MODE: hostname
       MODE: standalone
+      JVM_XMS: 256m
+      JVM_XMX: 256m
+      JVM_XMN: 128m
+      JVM_MS: 32m
+      JVM_MMS: 48m
     volumes:
       - ~/docker-volume/nacos/logs:/home/nacos/logs
       - ~/docker-volume/nacos/init.d:/home/nacos/init.d

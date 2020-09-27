@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  nexus3:
+    container_name: nexus3
+    image: sonatype/nexus3
+    restart: always
+    volumes:
+      - ~/docker-volume/nexus:/nexus-data
+    ports:
+      - 8081:8081
+    environment:
+      INSTALL4J_ADD_VM_PARAMS: -Xms320m -Xmx320m
+  maxwell:
+    container_name: maxwell
+    image: zendesk/maxwell
+    restart: always
+    environment:
+      MAXWELL_PRODUCER: kafka
+      KAFKA_BROKERS: host.docker.internal:9092
+      MYSQL_HOST: host.docker.internal
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MAXWELL_OPTIONS: --port=3306 --kafka_topic=maxwell_%{database}_%{table} --filter=exclude:*.*,include:maxwell_source.*
+      JAVA_OPTS: -Xms128m -Xmx128m
+  nacos:
+    container_name: nacos
+    image: nacos/nacos-server:latest
+    restart: always
+    environment:
+      PREFER_HOST_MODE: hostname
+      MODE: standalone
+      JVM_XMS: 256m
+      JVM_XMX: 256m
+      JVM_XMN: 128m
+      JVM_MS: 32m
+      JVM_MMS: 48m
+    volumes:
+      - ~/docker-volume/nacos/logs:/home/nacos/logs
+      - ~/docker-volume/nacos/init.d:/home/nacos/init.d
+    ports:
+      - 8848:8848
