@@ -9,7 +9,7 @@ services:
       - 1081:1081
     environment:
       SOCKS_HOST: 192.168.4.23:1080
-  php-ng:
+  php72-ng:
     container_name: php72-ng
     image: chenyingzhou/php72-ng
     restart: always
@@ -19,7 +19,7 @@ services:
     ports:
       - 80:80
   mysql:
-    container_name: mysql-8.0
+    container_name: mysql
     image: mysql:8.0
     restart: always
     volumes:
@@ -38,7 +38,7 @@ services:
     ports:
       - 6379:6379
   zookeeper:
-    container_name: zookeeper-3.6
+    container_name: zookeeper
     image: zookeeper:3.6
     restart: always
     volumes:
@@ -50,7 +50,7 @@ services:
     environment:
       JVMFLAGS: -Xms64m -Xmx128m
   kafka:
-    container_name: kafka-2.12-2.5.0
+    container_name: kafka
     image: wurstmeister/kafka:2.12-2.5.0
     restart: always
     volumes:
@@ -100,4 +100,4 @@ services:
       - ~/docker-volume/nacos/logs:/home/nacos/logs
       - ~/docker-volume/nacos/init.d:/home/nacos/init.d
     ports:
-      - "8848:8848"
+      - 8848:8848
