@@ -16,6 +16,7 @@ services:
     volumes:
       - ~/source/docker-volume/php72-ng/conf.d:/etc/nginx/conf.d
       - ~/source:/app
+    # Mac和Windows下去掉extra_hosts选项
     extra_hosts:
       - host.docker.internal:172.17.0.1
     ports:

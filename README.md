@@ -1,11 +1,12 @@
 # dockerfile
 
 ## 使用docker-compose启动服务
-- 复制docker-compose-example.yml为docker-compose.yml
+- 复制`docker-compose-full.yml`或`docker-compose-part.yml`为`docker-compose.yml`
 ```shell script
-cp docker-compose-example.yml docker-compose.yml
+cp docker-compose-full.yml docker-compose.yml
 ```
-- 修改docker-compose.yml的volumes
+- 若使用Mac或Windows，需要去掉docker-compose.yml中的所有`extra_hosts`选项
+- 根据实际情况修改docker-compose.yml的volumes
 - 运行
 ```shell script
 docker-compose up -d
