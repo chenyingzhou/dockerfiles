@@ -14,9 +14,9 @@ services:
     image: zookeeper:3.6
     restart: always
     volumes:
-      - ~/docker-volume/zookeeper/data:/data
-      - ~/docker-volume/zookeeper/datalog:/datalog
-      - ~/docker-volume/zookeeper/logs:/logs
+      - ~/source/docker-volume/zookeeper/data:/data
+      - ~/source/docker-volume/zookeeper/datalog:/datalog
+      - ~/source/docker-volume/zookeeper/logs:/logs
     ports:
       - 2181:2181
     environment:
@@ -26,7 +26,7 @@ services:
     image: wurstmeister/kafka:2.12-2.5.0
     restart: always
     volumes:
-      - ~/docker-volume/kafka:/kafka
+      - ~/source/docker-volume/kafka:/kafka
     ports:
       - 9092:9092
     environment:
@@ -41,7 +41,7 @@ services:
     image: sonatype/nexus3
     restart: always
     volumes:
-      - ~/docker-volume/nexus:/nexus-data
+      - ~/source/docker-volume/nexus:/nexus-data
     ports:
       - 8081:8081
     environment:
@@ -73,7 +73,7 @@ services:
       JVM_MS: 32m
       JVM_MMS: 48m
     volumes:
-      - ~/docker-volume/nacos/logs:/home/nacos/logs
-      - ~/docker-volume/nacos/init.d:/home/nacos/init.d
+      - ~/source/docker-volume/nacos/logs:/home/nacos/logs
+      - ~/source/docker-volume/nacos/init.d:/home/nacos/init.d
     ports:
       - 8848:8848
