@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker build -f nginx/Dockerfile -t chenyingzhou/nginx:1.18 .
+docker build -f socks2http/Dockerfile -t chenyingzhou/socks2http:latest .
+docker build -f php72-cli/Dockerfile -t chenyingzhou/php-cli:7.2 .
+docker build -f php72-fpm/Dockerfile -t chenyingzhou/php-fpm:7.2 .
