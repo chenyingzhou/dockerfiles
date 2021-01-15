@@ -9,18 +9,27 @@ services:
       - 1081:1081
     environment:
       SOCKS_HOST: 192.168.4.23:1080
-  php72-ng:
-    container_name: php72-ng
-    image: chenyingzhou/php72-ng
+  nginx:
+    container_name: nginx
+    image: chenyingzhou/nginx:1.18
     restart: always
     volumes:
-      - ~/source/docker-volume/php72-ng/conf.d:/etc/nginx/conf.d
+      - ~/source/docker-volume/nginx/conf.d:/etc/nginx/conf.d
+      - ~/source/docker-volume/nginx/log:/var/log/nginx
+      - ~/source:/app
+    ports:
+      - 80:80
+  php-fpm:
+    container_name: php-fpm
+    image: chenyingzhou/php-fpm:7.2
+    restart: always
+    volumes:
       - ~/source:/app
     # Mac和Windows下去掉extra_hosts选项
     extra_hosts:
       - host.docker.internal:172.17.0.1
     ports:
-      - 80:80
+      - 9000:9000
   mysql:
     container_name: mysql
     image: mysql:8.0
@@ -35,10 +44,10 @@ services:
     command: --default-authentication-plugin=mysql_native_password
   redis:
     container_name: redis
-    image: chenyingzhou/redis
+    image: redis:6.0
     restart: always
     volumes:
-      - ~/source/docker-volume/redis:/var/lib/redis
+      - ~/source/docker-volume/redis:/data
     ports:
       - 6379:6379
   zookeeper:
@@ -95,7 +104,7 @@ services:
       - mysql
   nacos:
     container_name: nacos
-    image: nacos/nacos-server:latest
+    image: nacos/nacos-server
     restart: always
     environment:
       PREFER_HOST_MODE: hostname

@@ -1,9 +1,9 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 # 安装privoxy
 RUN apt-get update \
     && apt-get install -y privoxy \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 # 添加启动脚本

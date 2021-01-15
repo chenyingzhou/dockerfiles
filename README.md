@@ -1,7 +1,7 @@
 # dockerfile
 
 ## 使用docker-compose启动服务
-- 复制`docker-compose-full.yml`或`docker-compose-part.yml`为`docker-compose.yml`
+- 复制`docker-compose-exsample`为`docker-compose.yml`
 ```shell script
 cp docker-compose-full.yml docker-compose.yml
 ```
