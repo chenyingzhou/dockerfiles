@@ -12,8 +12,8 @@ RUN apt-get update \
     && echo 'xdebug.mode=debug' >> /etc/php/7.2/mods-available/xdebug.ini \
     && echo 'xdebug.start_with_request=yes' >> /etc/php/7.2/mods-available/xdebug.ini \
     && echo 'xdebug.log=/dev/null' >> /etc/php/7.2/mods-available/xdebug.ini \
-    && echo 'xdebug.clinet_host=host.docker.internal' >> /etc/php/7.2/mods-available/xdebug.ini \
-    && echo 'xdebug.clinet_port=9003' >> /etc/php/7.2/mods-available/xdebug.ini \
+    && echo 'xdebug.client_host=host.docker.internal' >> /etc/php/7.2/mods-available/xdebug.ini \
+    && echo 'xdebug.client_port=9003' >> /etc/php/7.2/mods-available/xdebug.ini \
     && sed -i 's/^display_errors = Off/display_errors = On/' /etc/php/7.2/fpm/php.ini \
     && sed -i 's/^display_startup_errors = Off/display_startup_errors = On/' /etc/php/7.2/fpm/php.ini \
     && rm -rf /etc/php/5.6 /etc/php/7.0 /etc/php/7.1 /etc/php/7.3 /etc/php/7.4 /etc/php/8.0 \
