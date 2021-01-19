@@ -28,8 +28,6 @@ services:
     # Mac和Windows下去掉extra_hosts选项
     extra_hosts:
       - host.docker.internal:172.17.0.1
-    ports:
-      - 9000:9000
   mysql:
     container_name: mysql
     image: mysql:8.0
