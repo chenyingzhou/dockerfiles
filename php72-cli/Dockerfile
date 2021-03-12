@@ -6,7 +6,7 @@ COPY ./php72-cli/ondrej_ubuntu_php.gpg /etc/apt/trusted.gpg.d/ondrej_ubuntu_php.
 RUN apt-get update \
     && sh -c '/bin/echo -e "13\n33" | apt-get install -y tzdata' \
     && apt-get install -y curl \
-    && apt-get install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-gmp php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip php7.2-bcmath php-xdebug php-redis \
+    && apt-get install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-fpm php7.2-gd php7.2-gmp php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-sqlite3 php7.2-xml php7.2-zip php7.2-bcmath php7.2-xdebug php7.2-redis \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo 'xdebug.mode=debug' >> /etc/php/7.2/mods-available/xdebug.ini \
