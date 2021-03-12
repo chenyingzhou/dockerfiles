@@ -117,3 +117,26 @@ services:
       - ~/source/docker-volume/nacos/init.d:/home/nacos/init.d
     ports:
       - 8848:8848
+  es:
+    container_name: es
+    image: elasticsearch:7.10.1
+    restart: always
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes:
+      - ~/source/docker-volume/es-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+  kibana:
+    container_name: kibana
+    image: kibana:7.10.1
+    restart: always
+    environment:
+      ELASTICSEARCH_URL: http://es:9200
+      ELASTICSEARCH_HOSTS: '["http://es:9200"]'
+    ports:
+      - 5601:5601
+    depends_on:
+      - es
