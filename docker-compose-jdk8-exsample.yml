@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  jdk8-mvn-git-demo:
+    container_name: jdk8-mvn-git-demo
+    image: chenyingzhou/jdk8-mvn-git:latest
+    restart: always
+    volumes:
+      - app:/app
+      - opt:/opt
+      - m2:/root/.m2
+      - ssh:/host-ssh
+    environment:
+      GIT_URL: git@github.com:chenyingzhou/spring-boot-demo.git
+      VERSION: main
+      JAVA_OPTS: "-Xmx100M"
+
+volumes:
+  app:
+    external: true
+  opt:
+    external: true
+  m2:
+    external: true
+  ssh:
+    external: true
+# 需手动创建的卷映射，device必须填写绝对目录
+# docker volume create --opt type="none" --opt o="bind" --opt device="/Users/xxx/source" app
+# docker volume create --opt type="none" --opt o="bind" --opt device="/Users/xxx/source/opt" opt
+# docker volume create --opt type="none" --opt o="bind" --opt device="/Users/xxx/.m2" m2
+# docker volume create --opt type="none" --opt o="bind" --opt device="/Users/xxx/.ssh" ssh
