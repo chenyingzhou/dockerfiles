@@ -1,8 +1,8 @@
 FROM ubuntu:20.04
 
 # 安装php并修改配置文件(配置仅适用于开发环境)
-COPY ./php72-cli/ondrej-ubuntu-php-focal.list /etc/apt/sources.list.d/ondrej-ubuntu-php-focal.list
-COPY ./php72-cli/ondrej_ubuntu_php.gpg /etc/apt/trusted.gpg.d/ondrej_ubuntu_php.gpg
+COPY ./ondrej-ubuntu-php-focal.list /etc/apt/sources.list.d/ondrej-ubuntu-php-focal.list
+COPY ./ondrej_ubuntu_php.gpg /etc/apt/trusted.gpg.d/ondrej_ubuntu_php.gpg
 RUN apt-get update \
     && sh -c '/bin/echo -e "13\n33" | apt-get install -y tzdata' \
     && apt-get install -y curl \
@@ -20,7 +20,7 @@ RUN apt-get update \
     && rm -rf /usr/lib/php/20131226 /usr/lib/php/20151012 /usr/lib/php/20160303 /usr/lib/php/20180731 /usr/lib/php/20190902 /usr/lib/php/20200930
 
 # 编译安装php-mysql
-COPY ./php72-cli/mysql.tar.gz /mysql.tar.gz
+COPY ./mysql.tar.gz /mysql.tar.gz
 RUN apt-get update \
     && apt-get install -y php7.2-dev \
     && tar -zxf mysql.tar.gz \
