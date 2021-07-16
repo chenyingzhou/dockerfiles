@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update \
+    && sh -c '/bin/echo -e "6\n70" | apt-get install -y tzdata' \
     && apt-get install -y curl git \
     # install openjdk8
     && curl -o java-se-8u41-ri.tar.gz https://download.java.net/openjdk/jdk8u41/ri/openjdk-8u41-b04-linux-x64-14_jan_2020.tar.gz \
