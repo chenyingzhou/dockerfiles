@@ -35,6 +35,7 @@ ENV VERSION=main
 ENV JAVA_OPTS="-Xmx384M"
 
 # 添加启动脚本
-COPY --chmod=755 start.sh /start.sh
+COPY start.sh /start.sh
+RUN chmod 755 /start.sh
 
 CMD ["/start.sh"]
