@@ -31,7 +31,7 @@ VOLUME ["/app", "/opt", "/root/.m2", "/host-ssh"]
 EXPOSE 8080
 
 ENV GIT_URL=git@github.com:chenyingzhou/spring-boot-demo.git
-ENV VERSION=main
+ENV CHECKOUT=main
 ENV JAVA_OPTS="-Xmx384M"
 
 # 添加启动脚本

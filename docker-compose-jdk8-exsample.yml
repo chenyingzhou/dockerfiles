@@ -12,7 +12,7 @@ services:
       - ~/docker-volumes/ssh/:/host-ssh
     environment:
       GIT_URL: git@github.com:chenyingzhou/spring-boot-demo.git
-      VERSION: main
+      CHECKOUT: main
       JAVA_OPTS: "-Xmx100M"
 
 #volumes:
