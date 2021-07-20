@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: nginx
+    image: chenyingzhou/nginx:1.18
+    restart: always
+    volumes:
+      - ~/docker-volumes/nginx/conf.d:/etc/nginx/conf.d
+      - ~/docker-volumes/nginx/log:/var/log/nginx
+      - ~/source:/app
+    ports:
+      - 80:80
+  php-fpm:
+    container_name: php-fpm
+    image: chenyingzhou/php-fpm:7.2
+    restart: always
+    volumes:
+      - ~/source:/app
+    # Mac和Windows下去掉extra_hosts选项
+    extra_hosts:
+      - host.docker.internal:172.17.0.1
