@@ -23,7 +23,7 @@ git clone ${GIT_URL} 2>/dev/null
 cd ${PROJECT}
 if [ -n "${CHECKOUT}" ]; then
   git checkout ${CHECKOUT} 2>/dev/null
-  git pull 2>/dev.null
+  git pull 2>/dev/null
 fi
 
 # 若版本与上次相同则跳过编译
