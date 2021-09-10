@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  v2raya:
+    container_name: v2raya
+    image: mzz2017/v2raya
+    restart: always
+    ports:
+      - "2017:2017"
+      - "1080-1081:1080-1081"
+    volumes:
+      - ~/docker-volumes/v2raya:/etc/v2raya
