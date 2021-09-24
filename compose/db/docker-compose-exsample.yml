@@ -3,7 +3,7 @@ version: '3'
 services:
   mysql:
     container_name: mysql
-    image: mysql:8.0
+    image: mysql:8
     restart: always
     volumes:
       - ~/docker-volumes/mysql/data:/var/lib/mysql
@@ -15,7 +15,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password
   redis:
     container_name: redis
-    image: redis:6.0
+    image: redis:6
     restart: always
     volumes:
       - ~/docker-volumes/redis:/data
