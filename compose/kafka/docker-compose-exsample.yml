@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  kafka:
+    container_name: kafka
+    image: chenyingzhou/kafka:3
+    restart: always
+    volumes:
+      - ~/docker-volumes/kafka:/tmp/kraft-combined-logs
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_HEAP_OPTS: -Xms128m -Xmx200m
