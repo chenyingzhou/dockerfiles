@@ -11,3 +11,4 @@ services:
       - "9092:9092"
     environment:
       KAFKA_HEAP_OPTS: -Xms128m -Xmx200m
+      ADVERTISED_HOST: host.docker.internal
