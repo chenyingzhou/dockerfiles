@@ -5,7 +5,13 @@ services:
     container_name: socks2http
     image: chenyingzhou/socks2http
     restart: always
+    networks:
+      - compose
     ports:
-      - 1081:1081
+      - "1081:1081"
     environment:
       SOCKS_HOST: 192.168.4.23:1080
+
+networks:
+  compose:
+    external: true

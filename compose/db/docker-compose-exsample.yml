@@ -8,8 +8,10 @@ services:
     volumes:
       - ~/docker-volumes/mysql/data:/var/lib/mysql
       - ~/docker-volumes/mysql/conf:/etc/mysql/conf.d/mysqld.cnf
+    networks:
+      - compose
     ports:
-      - "3306:3306"
+      - '3306:3306'
     environment:
       MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Shanghai
@@ -20,5 +22,11 @@ services:
     restart: always
     volumes:
       - ~/docker-volumes/redis:/data
+    networks:
+      - compose
     ports:
-      - "6379:6379"
+      - '6379:6379'
+
+networks:
+  docker-compose:
+    external: true

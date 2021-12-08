@@ -12,3 +12,9 @@ services:
     environment:
       KAFKA_HEAP_OPTS: -Xms128m -Xmx200m
       ADVERTISED_HOST: host.docker.internal
+    networks:
+      - compose
+
+networks:
+  compose:
+    external: true

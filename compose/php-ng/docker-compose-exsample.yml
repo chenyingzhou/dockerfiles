@@ -9,8 +9,10 @@ services:
       - ~/docker-volumes/nginx/conf.d:/etc/nginx/conf.d
       - ~/docker-volumes/nginx/log:/var/log/nginx
       - ~/source:/app
+    networks:
+      - compose
     ports:
-      - 80:80
+      - '80:80'
   php-fpm:
     container_name: php-fpm
     image: chenyingzhou/php-fpm:7.2
@@ -20,3 +22,9 @@ services:
     # Mac和Windows下去掉extra_hosts选项
     extra_hosts:
       - host.docker.internal:172.17.0.1
+    networks:
+      - compose
+
+networks:
+  compose:
+    external: true

@@ -10,3 +10,9 @@ services:
       - "1080-1081:1080-1081"
     volumes:
       - ~/docker-volumes/v2raya:/etc/v2raya
+    networks:
+      - compose
+
+networks:
+  compose:
+    external: true

@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  maxwell:
+    container_name: maxwell
+    image: zendesk/maxwell
+    restart: always
+    environment:
+      MAXWELL_PRODUCER: kafka
+      KAFKA_BROKERS: kafka:9092
+      MYSQL_HOST: host.docker.internal
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: root
+      MAXWELL_OPTIONS: --port=3306 --kafka_topic=maxwell_%{database}_%{table} --filter=exclude:*.*,include:octopus.*
+      JAVA_OPTS: -Xms128m -Xmx128m
+    networks:
+      - compose
+
+networks:
+  compose:
+    external: true

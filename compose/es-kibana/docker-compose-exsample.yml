@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:7.10.1
+    restart: always
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: -Xms512m -Xmx512m
+    volumes:
+      - ~/docker-volumes/es-data:/usr/share/elasticsearch/data
+    networks:
+      - compose
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+  kibana:
+    container_name: kibana
+    image: kibana:7.10.1
+    restart: always
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    networks:
+      - compose
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+
+networks:
+  compose:
+    external: true

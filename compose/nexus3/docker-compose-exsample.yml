@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  nexus3:
+    container_name: nexus3
+    image: sonatype/nexus3
+    restart: always
+    volumes:
+      - ~/docker-volumes/nexus:/nexus-data
+    networks:
+      - compose
+    ports:
+      - '8081:8081'
+    environment:
+      INSTALL4J_ADD_VM_PARAMS: -Xms320m -Xmx320m
+
+networks:
+  compose:
+    external: true
