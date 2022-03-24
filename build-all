@@ -5,3 +5,5 @@ docker build -t chenyingzhou/socks2http:latest ./socks2http
 docker build -t chenyingzhou/php-cli:7.2 ./php72-cli
 docker build -t chenyingzhou/php-fpm:7.2 ./php72-fpm
 docker build -t chenyingzhou/jdk8-mvn-git:latest ./jdk8-mvn-git
+docker build -t chenyingzhou/kafka:3 ./kafka
+docker build -t chenyingzhou/rocketmq:4.9.2 ./rocketmq
