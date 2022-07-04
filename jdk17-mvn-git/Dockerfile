@@ -3,12 +3,12 @@ FROM ubuntu:20.04
 RUN apt-get update \
     && sh -c '/bin/echo -e "6\n70" | apt-get install -y tzdata' \
     && apt-get install -y curl git \
-    # install openjdk8
-    && curl -o openlogic-openjdk-8u332-b09-linux-x64.tar.gz https://builds.openlogic.com/downloadJDK/openlogic-openjdk/8u332-b09/openlogic-openjdk-8u332-b09-linux-x64.tar.gz \
-    && tar -xf openlogic-openjdk-8u332-b09-linux-x64.tar.gz \
-    && rm openlogic-openjdk-8u332-b09-linux-x64.tar.gz \
-    && mv openlogic-openjdk-8u332-b09-linux-x64 /opt/ \
-    && ln -s /opt/openlogic-openjdk-8u332-b09-linux-x64/bin/java /usr/local/bin/java \
+    # install openjdk17
+    && curl -o openjdk-17.0.2_linux-x64_bin.tar.gz https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && tar -xf openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && rm openjdk-17.0.2_linux-x64_bin.tar.gz \
+    && mv jdk-17.0.2 /opt/ \
+    && ln -s /opt/jdk-17.0.2/bin/java /usr/local/bin/java \
     # install maven
     && curl -o apache-maven-3.8.6-bin.tar.gz https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz \
     && tar -xf apache-maven-3.8.6-bin.tar.gz \
