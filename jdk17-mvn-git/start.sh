@@ -9,17 +9,14 @@ else
   exit 1
 fi
 
-mkdir /root/.ssh
+mkdir -p /root/.ssh
 chmod 700 /root/.ssh
 if [ -f /host-ssh/id_rsa ]; then
   cp /host-ssh/id_rsa /root/.ssh/id_rsa
   chown root:root /root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
-  cp /host-ssh/known_hosts /root/.ssh/known_hosts
-  chown root:root /root/.ssh/known_hosts
-  chmod 600 /root/.ssh/known_hosts
 fi
-#ssh-keyscan ${DOMAIN} >/root/.ssh/known_hosts
+ssh-keyscan ${DOMAIN} >/root/.ssh/known_hosts
 
 cd /app
 git clone ${GIT_URL} 2>/dev/null
