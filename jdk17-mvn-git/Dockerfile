@@ -2,19 +2,17 @@ FROM ubuntu:20.04
 
 RUN apt-get update \
     && sh -c '/bin/echo -e "6\n70" | apt-get install -y tzdata' \
-    && apt-get install -y curl git \
+    && apt-get install -y curl git openjdk-17-jdk \
     # install openjdk17
     && curl -o openjdk-17.0.2_linux-x64_bin.tar.gz https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_linux-x64_bin.tar.gz \
     && tar -xf openjdk-17.0.2_linux-x64_bin.tar.gz \
     && rm openjdk-17.0.2_linux-x64_bin.tar.gz \
-    && mv jdk-17.0.2 /opt/ \
-    && ln -s /opt/jdk-17.0.2/bin/java /usr/local/bin/java \
+    && ln -s /jdk-17.0.2/bin/java /usr/local/bin/java \
     # install maven
-    && curl -o apache-maven-3.8.6-bin.tar.gz https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz \
-    && tar -xf apache-maven-3.8.6-bin.tar.gz \
-    && rm apache-maven-3.8.6-bin.tar.gz \
-    && mv apache-maven-3.8.6 /opt/ \
-    && ln -s /opt/apache-maven-3.8.6/bin/mvn /usr/local/bin/mvn \
+    && curl -o apache-maven-3.8.8-bin.tar.gz https://dlcdn.apache.org/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz \
+    && tar -xf apache-maven-3.8.8-bin.tar.gz \
+    && rm apache-maven-3.8.8-bin.tar.gz \
+    && ln -s /apache-maven-3.8.8/bin/mvn /usr/local/bin/mvn \
     # clean
     && apt-get purge curl -y \
     && apt-get autoremove -y \
@@ -22,8 +20,8 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
-RUN mkdir -p /app /user/local/neverland /root/.m2 /host-ssh
-VOLUME ["/app", "/user/local/neverland", "/root/.m2", "/host-ssh"]
+RUN mkdir -p /app /root/.m2 /host-ssh
+VOLUME ["/app", "/root/.m2", "/host-ssh"]
 EXPOSE 8080
 
 ENV APP_NAME=demo
