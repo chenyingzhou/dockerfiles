@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkinsci/blueocean
+    restart: always
+    volumes:
+      - ~/docker-volumes/jenkins:/var/jenkins_home
+    networks:
+      - compose
+    ports:
+      - "8080:8080"
+
+networks:
+  compose:
+    external: true
