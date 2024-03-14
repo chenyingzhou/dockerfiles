@@ -7,7 +7,7 @@ services:
     restart: always
     ports:
       - "2017:2017"
-      - "1080-1081:1080-1081"
+      - "1080-1081:20170-20171"
     volumes:
       - ~/docker-volumes/v2raya:/etc/v2raya
     networks:
