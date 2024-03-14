@@ -23,7 +23,7 @@ git clone ${GIT_URL} 2>/dev/null
 cd ${PROJECT}
 if [ -n "${CHECKOUT}" ]; then
   git checkout ${CHECKOUT} 2>/dev/null
-  git pull 2>/dev/null
+  git pull --force origin ${CHECKOUT}:${CHECKOUT} 2>/dev/null
 fi
 
 # 若版本与上次相同则跳过编译
@@ -40,4 +40,4 @@ mkdir -p /app/_logs
 
 # 以最大体积的.jar文件为可执行的jar包
 jar=$(find /app/${PROJECT} -type f -name "*${APP_NAME}*.jar" -exec stat -c '%s %n' {} \; | sort -nr | head -1 | awk '{print $2}')
-java -Dfile.encoding=UTF-8 -server ${JAVA_OPTS} -jar ${jar} >/app/_logs/${APP_NAME}.log
+exec java -Dfile.encoding=UTF-8 -server ${JAVA_OPTS} -jar ${jar} >/app/_logs/${APP_NAME}.log
