@@ -27,17 +27,17 @@ if [ -n "${CHECKOUT}" ]; then
 fi
 
 # 若版本与上次相同则跳过编译
-mkdir -p /app/_build_versions
+mkdir -p /app/.build_versions
 HEAD_VERSION=$(git rev-parse HEAD)
-BUILD_VERSION=$(cat /app/_build_versions/${PROJECT} 2>/dev/null)
+BUILD_VERSION=$(cat /app/.build_versions/${PROJECT} 2>/dev/null)
 if [ "${HEAD_VERSION}" != "${BUILD_VERSION}" ]; then
   mvn clean package -Dmaven.test.skip=true
-  echo ${HEAD_VERSION} >/app/_build_versions/${PROJECT}
+  echo ${HEAD_VERSION} >/app/.build_versions/${PROJECT}
 fi
 
 # 日志目录
-mkdir -p /app/_logs
+mkdir -p /app/logs
 
 # 以最大体积的.jar文件为可执行的jar包
 jar=$(find /app/${PROJECT} -type f -name "*${APP_NAME}*.jar" -exec stat -c '%s %n' {} \; | sort -nr | head -1 | awk '{print $2}')
-exec java -Dfile.encoding=UTF-8 -server ${JAVA_OPTS} -jar ${jar} >/app/_logs/${APP_NAME}.log
+exec java -Dfile.encoding=UTF-8 -server ${JAVA_OPTS} -jar ${jar} >/app/logs/${APP_NAME}.log
