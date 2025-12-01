@@ -16,7 +16,14 @@ if [ -f /host-ssh/id_rsa ]; then
   chown root:root /root/.ssh/id_rsa
   chmod 600 /root/.ssh/id_rsa
 fi
-ssh-keyscan ${DOMAIN} >/root/.ssh/known_hosts
+
+if [[ $DOMAIN =~ ^(.*):(.*)$ ]]; then
+  IP=${BASH_REMATCH[1]}
+  PORT=${BASH_REMATCH[2]}
+  ssh-keyscan -p ${PORT} ${IP} >/root/.ssh/known_hosts
+else
+  ssh-keyscan ${DOMAIN} >/root/.ssh/known_hosts
+fi
 
 cd /app
 git clone ${GIT_URL} 2>/dev/null
